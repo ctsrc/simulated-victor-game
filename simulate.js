@@ -29,9 +29,9 @@ for (let i of Array(1000).keys())
   const gn_result_elem = document.createElement('td');
 
   round_num_elem.textContent = round_id.toString();
-  rand_result_elem.textContent = 'Unknown';
-  osr_result_elem.textContent = 'Unknown';
-  gn_result_elem.textContent = 'Unknown';
+  rand_result_elem.textContent = 'Unimpl';
+  osr_result_elem.textContent = 'Unimpl';
+  gn_result_elem.textContent = 'Unimpl';
 
   const results_of_round_elem = document.createElement('tr');
   results_of_round_elem.appendChild(round_num_elem);
@@ -40,7 +40,7 @@ for (let i of Array(1000).keys())
   results_of_round_elem.appendChild(gn_result_elem);
   results_summary_rounds_elem.prepend(results_of_round_elem);
 
-  win_pct_rand_elem.textContent = 'Unknown';
-  win_pct_osr_elem.textContent = 'Unknown';
-  win_pct_gn_elem.textContent = 'Unknown';
+  win_pct_rand_elem.textContent = 'Unimpl';
+  win_pct_osr_elem.textContent = 'Unimpl';
+  win_pct_gn_elem.textContent = 'Unimpl';
 }
