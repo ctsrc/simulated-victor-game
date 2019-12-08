@@ -102,6 +102,7 @@ body
 
 #results-summary-table
 {
+  font-size: .9rem;
   flex-grow: 1;
   width: 100%;
 
