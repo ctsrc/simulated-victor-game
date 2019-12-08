@@ -28,22 +28,18 @@
   padding: 0;
   box-sizing: border-box;
 }
-@media (max-aspect-ratio: 4/3)
-{
-  #results-summary
-  {
-    margin-top: 1rem;
-  }
-}
 @media (min-aspect-ratio: 4/3)
 {
-  #main
+  :root
+  {
+    scrollbar-width: thin;
+    scrollbar-color: rebeccapurple darkslateblue;
+  }
+  body
   {
     width: 60%;
     height: 100vh;
     overflow: auto;
-    scrollbar-width: thin;
-    scrollbar-color: rebeccapurple darkslateblue;
   }
   #results-summary
   {
@@ -56,16 +52,16 @@
   }
 }
 
-#main
+body
 {
   font-size: 1.25rem;
   padding-top: 1rem;
 }
 
-#main > :not(#results-summary)
+body > :not(#results-summary)
 {
-  margin-left: 2rem;
-  margin-right: 2rem;
+  margin-left: .75rem;
+  margin-right: .75rem;
 }
 
 #about > blockquote
@@ -93,8 +89,13 @@
   margin-top: 1rem;
 }
 
-#main > * + :not(#results-summary),
-#main > :not(#results-summary) * + *,
+#note-about-summary
+{
+  margin-bottom: 1rem;
+}
+
+body > * + :not(#results-summary),
+body > :not(#results-summary) * + *,
 #results-summary > figcaption
 {
   margin-top: .5rem;
@@ -115,6 +116,16 @@
   flex-direction: column;
 
   overflow-y: auto;
+}
+
+@media (max-aspect-ratio: 4/3)
+{
+  #results-summary
+  {
+    padding-left: .75rem;
+    padding-right: .75rem;
+    margin-bottom: 1rem;
+  }
 }
 
 #results-summary-table
