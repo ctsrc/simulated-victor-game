@@ -15,6 +15,7 @@ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 -->
+<meta name=viewport content="width=device-width, initial-scale=1">
 <title>A Thousand Rounds of the Victor Game</title>
 <link href=style.css rel=stylesheet>
 <div id=main>
@@ -47,7 +48,13 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
   <p>Below we simulate 1000 rounds of The Victor Game, and we pit the original optimal stopping rule up against the
     algorithm described by GistNoesis for the specific way that numbers are being generated in The Victor Game.
     Additionally, we run a simple random choice for comparison which has a 50% probability of saying stop when asked whether to stop or to continue.
-  <p>Results from the simulation are summarized in <a href=#results-summary>a separate table</a> for easy review.</p>
+  <p>Results from the simulation are summarized in <a href=#results-summary>a separate table</a> for easy review.
+  <p><strong>Please note</strong> that the percentages shown in the summary table reflect the percentage of rounds
+    in which the "correct" choice was made for each of the three algorithms. The algorithms are given the same inputs
+    for each round, but each of them do not "know" what the other algorithms are choosing and are not affected by
+    whether or not the other algorithms choose the biggest number or not. In any round, they could all make
+    the "correct" choice, or two of them could, or one of the could, or none of the could. Point is, it's usually
+    not a case of one winner and two losers for each individual round.
   <div id=rounds>
   </div>
 </div>
@@ -72,11 +79,6 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
       </tr>
     </tfoot>
   </table>
-  <figcaption><strong>Table 1: Simulation Results Summary.</strong> Please note that the percentages shown reflect
-    the percentage of rounds in which the "correct" choice was made for each of the three algorithms. The algorithms
-    are given the same inputs for each round, but each of them do not "know" what the other algorithms are choosing
-    and are not affected by whether or not the other algorithms choose the biggest number or not. In any round,
-    they could all make the "correct" choice, or two of them could, or one of the could, or none of the could.
-    Point is, it's usually not a case of one winner and two losers for each individual round.</figcaption>
+  <figcaption><strong>Table 1: Simulation Results Summary.</strong></figcaption>
 </figure>
 <script src=simulate.js></script>

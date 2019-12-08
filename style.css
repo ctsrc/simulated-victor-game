@@ -67,6 +67,10 @@ body
 {
   color: midnightblue;
 }
+#about > blockquote a
+{
+  overflow-wrap: break-word;
+}
 
 #about + h2
 {
