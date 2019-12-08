@@ -170,9 +170,14 @@ body
 
 #results-summary-table > tbody > tr > td
 {
-  text-align: right;
   background: aliceblue;
   color: royalblue;
+}
+
+#results-summary-table > tbody > tr > td,
+#results-summary-table > tfoot > tr > td
+{
+  text-align: right;
 }
 
 #results-summary-table > tbody,
