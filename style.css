@@ -22,6 +22,10 @@
 {
   color: cornsilk;
 }
+a
+{
+  overflow-wrap: break-word;
+}
 *
 {
   margin: 0;
@@ -100,10 +104,6 @@ blockquote a, blockquote a:hover, blockquote a:active, blockquote a:visited,
 blockquote
 {
   color: midnightblue;
-}
-blockquote a
-{
-  overflow-wrap: break-word;
 }
 
 h2
