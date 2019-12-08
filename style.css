@@ -28,6 +28,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+@media (max-aspect-ratio: 4/3)
+{
+  #results-summary
+  {
+    margin-top: 1rem;
+  }
+}
 @media (min-aspect-ratio: 4/3)
 {
   #main
@@ -52,12 +59,13 @@
 #main
 {
   font-size: 1.25rem;
+  padding-top: 1rem;
 }
 
 #main > :not(#results-summary)
 {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 #about > blockquote
