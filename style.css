@@ -1,0 +1,191 @@
+/*
+ * Copyright (c) 2019 Erik Nordstrøm <erik@nordstroem.no>
+ *
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ */
+
+*
+{
+  margin: 0;
+  padding: 0;
+}
+body
+{
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+@media (max-aspect-ratio: 1/1)
+{
+  body
+  {
+    flex-direction: column;
+  }
+}
+
+#main
+{
+  background: darkslateblue;
+  padding: .25rem .25rem .5rem .5rem;
+  flex-basis: 0;
+  flex-grow: 1;
+  overflow: auto;
+  font-size: 1.25rem;
+}
+#main a, #main a:hover, #main a:active, #main a:visited,
+#main
+{
+  color: cornsilk;
+}
+#about > blockquote
+{
+  margin-top: .75rem;
+  margin-right: .25rem;
+  padding: .25rem .75rem .25rem .25rem;
+  border-left: .5rem solid midnightblue;
+  border-right: 1px solid midnightblue;
+  background: lightcyan;
+  font-size: 1.125rem;
+}
+#about > blockquote a, #about > blockquote a:hover, #about > blockquote a:active, #about > blockquote a:visited,
+#about > blockquote
+{
+  color: midnightblue;
+}
+
+#about + h2
+{
+  margin-top: 1rem;
+}
+
+#main * + *,
+#results-summary > figcaption
+{
+  margin-top: .5rem;
+}
+#results-summary > figcaption
+{
+  font-size: .85rem;
+  color: midnightblue;
+}
+
+#results-summary
+{
+  background: lightsteelblue;
+  flex-basis: 40%;
+  padding: .5rem .25rem .5rem .5rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#results-summary-table
+{
+  flex-grow: 1;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#results-summary-table > thead > tr > th,
+#results-summary-table > tfoot > tr > th,
+#results-summary-table > tfoot > tr > td
+{
+  background: lightslategray;
+  color: aliceblue;
+}
+
+/*
+ * XXX: Only tbody will normally need to scroll but we tell
+ *      the others to scroll too in order to have equal width
+ *      of the cells in the thead and tfoot as we have
+ *      in our tbody.
+ *
+ * TODO: Calculate width for last child in thead and tfoot based
+ *       on width of scrollbar and then unassign class in script.
+ */
+#results-summary-table > thead.need-to-calculate-widths,
+#results-summary-table > tbody,
+#results-summary-table > tfoot.need-to-calculate-widths
+{
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: slategray lightsteelblue;
+}
+
+#results-summary-table > tbody
+{
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+#results-summary-table > thead > tr,
+#results-summary-table > tbody > tr,
+#results-summary-table > tfoot > tr
+{
+  display: flex;
+  flex-direction: row;
+}
+
+#results-summary-table > thead > tr > :first-child,
+#results-summary-table > tfoot > tr > :first-child
+{
+  text-align: left;
+  white-space: nowrap;
+}
+
+#results-summary-table > thead > tr > th,
+#results-summary-table > tbody > tr > td,
+#results-summary-table > tfoot > tr > *
+{
+  margin-right: .25rem;
+  padding: .25rem .5rem;
+}
+
+#results-summary-table > thead > tr > th
+{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+#results-summary-table > thead > tr > th,
+#results-summary-table > tfoot > tr > *
+{
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+#results-summary-table > tbody > tr > td
+{
+  text-align: right;
+  display: block;
+  flex-basis: 0;
+  flex-grow: 1;
+  background: aliceblue;
+  color: royalblue;
+}
+
+#results-summary-table > tbody,
+#results-summary-table > tbody > tr + tr,
+#results-summary-table > tfoot
+{
+  margin-top: .25rem;
+}
