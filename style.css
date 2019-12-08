@@ -64,7 +64,7 @@ body > :not(#results-summary)
   margin-right: .75rem;
 }
 
-#about > blockquote
+blockquote
 {
   margin-top: .75rem;
   margin-right: .25rem;
@@ -74,17 +74,17 @@ body > :not(#results-summary)
   background: lightcyan;
   font-size: 1.125rem;
 }
-#about > blockquote a, #about > blockquote a:hover, #about > blockquote a:active, #about > blockquote a:visited,
-#about > blockquote
+blockquote a, blockquote a:hover, blockquote a:active, blockquote a:visited,
+blockquote
 {
   color: midnightblue;
 }
-#about > blockquote a
+blockquote a
 {
   overflow-wrap: break-word;
 }
 
-#about + h2
+h2
 {
   margin-top: 1rem;
 }

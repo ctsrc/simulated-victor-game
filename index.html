@@ -19,27 +19,25 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 <title>A Thousand Rounds of the Victor Game</title>
 <link href=style.css rel=stylesheet>
 <h1>A Thousand Rounds of the Victor Game</h1>
-<div id=about>
-  <p><strong>The Victor Game</strong> is a game similar to <a href=https://en.wikipedia.org/wiki/Secretary_problem>The Secretary Problem</a>,
-    but the numbers are generated in a specific, known way.
-  <p>User GistNoesis on Hacker News <a href=https://news.ycombinator.com/item?id=21701124#21732695>explains</a>:</p>
-  <blockquote>
-    <p>The distribution chosen here is ~ uniform for the number of digits.
-      [<a href=https://github.com/victorqribeiro/googol/blob/7cb61ff1374c6d18bea61ecf8ba89c01d0f1d000/js/main.js#L10>github.com/victorqribeiro/googol/blob/7cb61ff/js/main.js#L10</a>]
-    <p>This is not the same hypothesis as the problem stated in the video
-      [<a href=https://www.youtube.com/watch?v=OeJobV4jJG0>youtu.be/OeJobV4jJG0</a>].
-      The video talks about the "secretary problem". In [the secretary problem] you know nothing about the distribution.
-      You just know that the number are ordered.
-    <p>Here because you know the distribution you can do better by using a strategy which choose to stop
-      depending on the value of the number you have so far. For example if at the 15th pick you get a number with 99 digit,
-      you can safely assume that it is better to stop now (every time you pick you have only a ~1% chance of finding a 99-digit
-      number needed to do better so keeping it means you win (99/100)^(50-16) = 70%, whereas the non-exploitable strategy
-      (i.e. optimal strategy for the secretary problem) 50/e=18 will tell you to keep going and you would lose 70% of the times).
-    <p>For the secretary problem the theoretical way to sample the number is to set it up as a game where the first player
-      plays the game and the second pick the numbers adversely so that the first doesn't win. A good strategy for the second
-      player is to pick a distribution from a big set of varied distributions, and sample the number from this distribution.
-  </blockquote>
-</div>
+<p><strong>The Victor Game</strong> is a game similar to <a href=https://en.wikipedia.org/wiki/Secretary_problem>The Secretary Problem</a>,
+  but the numbers are generated in a specific, known way.
+<p>User GistNoesis on Hacker News <a href=https://news.ycombinator.com/item?id=21701124#21732695>explains</a>:</p>
+<blockquote>
+  <p>The distribution chosen here is ~ uniform for the number of digits.
+    [<a href=https://github.com/victorqribeiro/googol/blob/7cb61ff1374c6d18bea61ecf8ba89c01d0f1d000/js/main.js#L10>github.com/victorqribeiro/googol/blob/7cb61ff/js/main.js#L10</a>]
+  <p>This is not the same hypothesis as the problem stated in the video
+    [<a href=https://www.youtube.com/watch?v=OeJobV4jJG0>youtu.be/OeJobV4jJG0</a>].
+    The video talks about the "secretary problem". In [the secretary problem] you know nothing about the distribution.
+    You just know that the number are ordered.
+  <p>Here because you know the distribution you can do better by using a strategy which choose to stop
+    depending on the value of the number you have so far. For example if at the 15th pick you get a number with 99 digit,
+    you can safely assume that it is better to stop now (every time you pick you have only a ~1% chance of finding a 99-digit
+    number needed to do better so keeping it means you win (99/100)^(50-16) = 70%, whereas the non-exploitable strategy
+    (i.e. optimal strategy for the secretary problem) 50/e=18 will tell you to keep going and you would lose 70% of the times).
+  <p>For the secretary problem the theoretical way to sample the number is to set it up as a game where the first player
+    plays the game and the second pick the numbers adversely so that the first doesn't win. A good strategy for the second
+    player is to pick a distribution from a big set of varied distributions, and sample the number from this distribution.
+</blockquote>
 <h2>Source Code</h2>
 <p>The source code for this page is on GitHub here: <a href=https://github.com/ctsrc/simulated-victor-game>https://github.com/ctsrc/simulated-victor-game</a>.
 <h2>Simulation</h2>
