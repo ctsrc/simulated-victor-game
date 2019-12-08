@@ -14,44 +14,52 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+:root
+{
+  background: darkslateblue;
+}
+:root, a, a:hover, a:active, a:visited
+{
+  color: cornsilk;
+}
 *
 {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
-body
+@media (min-aspect-ratio: 4/3)
 {
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-}
-@media (max-aspect-ratio: 1/1)
-{
-  body
+  #main
   {
-    flex-direction: column;
+    width: 60%;
+    height: 100vh;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rebeccapurple darkslateblue;
+  }
+  #results-summary
+  {
+    position: fixed;
+    width: 40%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
   }
 }
 
 #main
 {
-  background: darkslateblue;
-  padding: .25rem .25rem .5rem .5rem;
-  flex-basis: 0;
-  flex-grow: 1;
-  overflow: auto;
   font-size: 1.25rem;
 }
-#main a, #main a:hover, #main a:active, #main a:visited,
-#main
+
+#main > :not(#results-summary)
 {
-  color: cornsilk;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
+
 #about > blockquote
 {
   margin-top: .75rem;
@@ -77,7 +85,8 @@ body
   margin-top: 1rem;
 }
 
-#main * + *,
+#main > * + :not(#results-summary),
+#main > :not(#results-summary) * + *,
 #results-summary > figcaption
 {
   margin-top: .5rem;
@@ -91,8 +100,8 @@ body
 #results-summary
 {
   background: lightsteelblue;
-  flex-basis: 40%;
   padding: .5rem .25rem .5rem .5rem;
+  min-height: 40vh;
 
   display: flex;
   flex-direction: column;
