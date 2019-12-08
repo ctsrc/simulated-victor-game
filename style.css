@@ -75,6 +75,10 @@ body
 {
   content: ".";
 }
+#page-meta > dd.more-dd-follow::after
+{
+  content: ",";
+}
 
 body > :not(#results-summary)
 {
