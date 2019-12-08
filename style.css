@@ -92,6 +92,8 @@ body
 
   display: flex;
   flex-direction: column;
+
+  overflow-y: auto;
 }
 
 #results-summary-table
@@ -133,6 +135,7 @@ body
 {
   flex-basis: 0;
   flex-grow: 1;
+  min-height: 6rem;
 }
 
 #results-summary-table > thead > tr,
