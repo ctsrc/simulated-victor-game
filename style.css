@@ -58,6 +58,24 @@ body
   padding-top: 1rem;
 }
 
+#page-meta
+{
+  font-size: .85rem;
+}
+#page-meta > dt,
+#page-meta > dd
+{
+  display: inline;
+}
+#page-meta > dt::after
+{
+  content: ":";
+}
+#page-meta > dd::after
+{
+  content: ".";
+}
+
 body > :not(#results-summary)
 {
   margin-left: .75rem;
