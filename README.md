@@ -1,4 +1,4 @@
-# victor-game
+# A Thousand Rounds of the Victor Game
 
 The Victor Game is a game similar to The Secretary Problem, but the numbers are
 generated in a specific, known way.
