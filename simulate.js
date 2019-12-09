@@ -121,12 +121,10 @@ const simulate_round = () =>
 {
   const t1 = Date.now();
   const curr_batch_size = Math.min(batch_size, Math.max(0, 10000 - round_id));
-  //console.log(curr_batch_size);
   if (curr_batch_size == 0) return;
   for (let i = 0 ; i < curr_batch_size; i++)
   {
     round_id += 1;
-    //console.log(round_id);
 
     let stop_at_nth_tile_ad  = 1 + Math.floor(Math.random() * 50);
     let stop_at_nth_tile_ct  = undefined;
