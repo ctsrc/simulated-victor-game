@@ -16,18 +16,21 @@ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 -->
+<title>Ten Thousand Rounds of the Victor Game – Beating the Optimal Stopping Rule with Game Specific Number Distribution Knowledge</title>
 <meta name=viewport content="width=device-width, initial-scale=1">
-<title>A Thousand Rounds of the Victor Game</title>
 <link href=style.css rel=stylesheet>
+<noscript><style>
+.needs-js { display: none !important; }
+</style></noscript>
 <body id=main>
-<h1>A Thousand Rounds of the Victor Game</h1>
+<h1>Ten Thousand Rounds of the Victor Game – Beating the Optimal Stopping Rule with Game Specific Number Distribution Knowledge</h1>
 <dl id=page-meta>
   <dt>Author</dt>
   <dd><a href=https://github.com/ctsrc>codetrotter</a></dd>
   <dt>Published</dt>
   <dd>2019-12-08</dd>
   <dt>Last modified</dt>
-  <dd>2019-12-08</dd>
+  <dd>2019-12-09</dd>
   <dt>Topics</dt>
   <dd class=more-dd-follow><a href=https://github.com/topics/simulation>simulation</a></dd>
   <dd class=more-dd-follow><a href=https://github.com/topics/statistics>statistics</a></dd>
@@ -42,14 +45,55 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
   <dt>Page sources</dt>
   <dd><a href=https://github.com/ctsrc/simulated-victor-game>https://github.com/ctsrc/simulated-victor-game</a></dd>
 </dl>
-<p><strong>The Victor Game</strong> – a name I use in reference to this guy
-  <a href=https://github.com/victorqribeiro>Victor Ribeiro</a> that created
-  <a href=https://victorribeiro.com/googolGame/>the game we are talking about here</a>
-  (<a href=https://github.com/victorqribeiro/googol>page sources on GitHub</a>) –
-  is a game that has characteristics similar to <a href=https://en.wikipedia.org/wiki/Secretary_problem>The Secretary Problem</a>,
-  but where the numbers are generated in a specific, known way. With this knowledge, it is possible to make
-  better decisions in the game than one would do if one were applying the Optimal Stopping Rule (OSR)
-  from The Secretary Problem when playing The Victor Game.
+<noscript>
+  <h2>⚠️ This page needs JavaScript, but...</h2>
+  <p>This page needs JavaScript but your browser either has JavaScript turned off or does not support JavaScript.
+    Without JavaScript, the simulation can not run, and this page will be kind of void of its point and purpose.
+    Please enable JavaScript or use a browser that supports JavaScript so that the simulation can be run.
+  <p>A static page showing a snapshot of the simulation results may be provided in the future but for now
+    only the dynamic version of the page exists and you need a browser with JavaScript enabled in order
+    for this page to work.</p>
+</noscript>
+<figure id=results-summary>
+  <noscript>
+    <h2>Unable to run simulation 😞</h2>
+    <p>JavaScript is disabled or not supported by your browser. Without JavaScript we cannot run the simulation.
+      Browsers that have JavaScript enabled would display a table summarizing the simulation results
+      in place of this message. Please enable JavaScript and reload this page or open this page in a browser
+      that supports JavaScript.</p>
+  </noscript>
+  <table class=needs-js id=results-summary-table>
+    <thead class=need-to-calculate-widths>
+    <tr>
+      <th rowspan>Round #</th>
+      <th>Algo: AD</th>
+      <th>Algo: CT</th>
+      <th>Algo: OSR</th>
+      <th>Algo: GN</th>
+    </tr>
+    </thead>
+    <tbody id=results-summary-rounds>
+    </tbody>
+    <tfoot class=need-to-calculate-widths>
+    <tr>
+      <th>Win%</th>
+      <td id=win-pct-ad></td>
+      <td id=win-pct-ct></td>
+      <td id=win-pct-osr></td>
+      <td id=win-pct-gn></td>
+    </tr>
+    </tfoot>
+  </table>
+  <figcaption><strong>Table 1:</strong> Simulation Results Summary for <span id=n-rounds-simulated>n</span> rounds played.</figcaption>
+</figure>
+<p><strong>The Victor Game</strong>, as I call it because <a href=https://github.com/victorqribeiro>the guy</a>
+  that created <a href=https://victorribeiro.com/googolGame/>the game we are talking about here</a>
+  is named Victor, is a game that has characteristics similar to
+  <a href=https://en.wikipedia.org/wiki/Secretary_problem>The Secretary Problem</a>.
+  (Page sources for his game are <a href=https://github.com/victorqribeiro/googol>available on GitHub</a>).
+  The Victor Game differs from The Secretary Problem in that the numbers in The Victor Game are generated in a specific,
+  known way. With this knowledge, it is possible to make better decisions in the game than one would do if one were
+  applying the Optimal Stopping Rule from The Secretary Problem when playing The Victor Game.
 <p>User GistNoesis on Hacker News <a href=https://news.ycombinator.com/item?id=21701124#21732695>explains</a>:</p>
 <blockquote>
   <p>The distribution chosen here is ~ uniform for the number of digits.
@@ -68,41 +112,22 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
     player is to pick a distribution from a big set of varied distributions, and sample the number from this distribution.
 </blockquote>
 <h2>Simulation</h2>
-<noscript><p>Note: JavaScript must be enabled in order to run simulation.</p></noscript>
-<p>Below we simulate 1000 rounds of The Victor Game, and we pit the original optimal stopping rule up against the
-  algorithm described by GistNoesis for the specific way that numbers are being generated in The Victor Game.
-  Additionally, we run a simple random choice for comparison which has a 50% probability of saying stop
-  each time it is asked whether to stop or to continue.
-<p>Results from the simulation are summarized in <a href=#results-summary>a separate table</a> for easy review.
-<p id=note-about-summary>Please note that the percentages shown in the summary table reflect the percentage of rounds
-  in which the "correct" choice was made for each of the three algorithms. The algorithms are given the same inputs
+<p>We simulate 10,000 rounds of The Victor Game, where we pit the original Optimal Stopping Rule (OSR) up against
+  the algorithm described by GistNoesis (GN) for the specific way that numbers are being generated in The Victor Game.
+  Additionally, we have two baselines for comparison:
+  <ul>
+    <li> Baseline 1: Randomly decide upon a tile to select prior to having gotten any information about
+      what numbers are found in any of the tiles (apriori decision; AD).
+    <li> Baseline 2: Simulate a coin toss (CT) which we look at to decide whether to stop or continue,
+      giving us a 50% probability of saying stop each time we are asked whether to stop or to continue.
+  </ul>
+<p>Results from the simulation are summarized in <a href=#results-summary>table 1</a>.</p>
+<p id=note-about-summary>Please note that the percentages at the bottom of table 1 reflect the percentage of rounds
+  in which the "correct" choice was made for each of the four algorithms. The algorithms are given the same inputs
   for each round, but each of them do not "know" what the other algorithms are choosing and are not affected by
   whether or not the other algorithms choose the biggest number or not. In any round, they could all make
-  the "correct" choice, or two of them could, or one of the could, or none of the could. Point is, it's usually
-  not a case of one winner and two losers for each individual round.
-<figure id=results-summary>
-  <table id=results-summary-table>
-    <thead class=need-to-calculate-widths>
-    <tr>
-      <th rowspan>Round #</th>
-      <th>Algo: Rand Choice</th>
-      <th>Algo: OSR</th>
-      <th>Algo: Gist Noesis</th>
-    </tr>
-    </thead>
-    <tbody id=results-summary-rounds>
-    </tbody>
-    <tfoot class=need-to-calculate-widths>
-    <tr>
-      <th>Win%</th>
-      <td id=win-pct-rand></td>
-      <td id=win-pct-osr></td>
-      <td id=win-pct-gn></td>
-    </tr>
-    </tfoot>
-  </table>
-  <figcaption><strong>Table 1:</strong> Simulation Results Summary.</figcaption>
-</figure>
+  the "correct" choice, or three of them could, or two of them could, or one of the could, or none of the could.
+  In other words, it's not necessarily a case of one winner and three losers for each individual round.
 </body>
 <script src=simulate.js></script>
 </html>

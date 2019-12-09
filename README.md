@@ -1,4 +1,4 @@
-# A Thousand Rounds of the Victor Game
+# Ten Thousand Rounds of the Victor Game
 
 A simulation of a game that has characteristics similar to The Secretary Problem,
 but where the numbers are generated in a specific, known way.
