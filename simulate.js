@@ -62,7 +62,6 @@ const generate_random_big_number = () =>
   for (let i = 0 ; i < num_digits ; i++)
   {
     result[i] = 1 + Math.random() * 9;
-    i++;
   }
 
   return result;
