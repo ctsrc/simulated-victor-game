@@ -54,14 +54,9 @@ const generate_random_big_number = () =>
 
   let result = Array(num_digits);
 
-  /*
-   * XXX: Except for in the case of num_digits == 0 handled above,
-   *      The Victor Game throws away any digits that are zero, so
-   *      we generate digits only in the inclusive range from 1 to 9.
-   */
   for (let i = 0 ; i < num_digits ; i++)
   {
-    result[i] = 1 + Math.random() * 9;
+    result[i] = Math.random() * 10;
   }
 
   return result;
